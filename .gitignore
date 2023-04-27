@@ -292,4 +292,13 @@ gradle-app.setting
 # Java heap dump
 *.hprof
 
+# Custom Setting #
+
+build.gradle
+gradlew
+gradlew.bat
+HELP.md
+settings.gradle
+/gradle/wrapper
+
 # End of https://www.toptal.com/developers/gitignore/api/intellij+all,intellij+iml,maven,gradle,java,macos,windows,sonar,sonarqube
