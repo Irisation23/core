@@ -24,7 +24,7 @@ class StatefulServiceTest {
         int price = statefulService1.getPrice();
         System.out.println("price = " + price); // 기대 값은 10000원이나 출력은 20000원이 나온다, 중간에 stateService2가 끼어있다.
 
-        Assertions.assertThat(statefulService1.getPrice()).isEqualTo(200000);
+        Assertions.assertThat(statefulService1.getPrice()).isEqualTo(20000);
     }
 
     static class TestConfig {
