@@ -27,4 +27,19 @@ public class SingletonTest {
         // memberService != memberService2
         assertThat(memberService1).isNotSameAs(memberService2);
     }
+
+    @Test
+    @DisplayName("스프링 없는 순수한 DI 컨테이너")
+    void singletonServiceTest() {
+        SingletonService singletonService1 = SingletonService.getInstance();
+        SingletonService singletonService2 = SingletonService.getInstance();
+
+        System.out.println("singletonService1: " + singletonService1);
+        System.out.println("singletonService2: " + singletonService1);
+
+        assertThat(singletonService1).isSameAs(singletonService2);
+
+        //same -> 참조 비교
+        //equal -> equals 메서드를 비교
+    }
 }
