@@ -47,5 +47,6 @@ public class AllBeanTest {
             DiscountPolicy discountPolicy = policyMap.get(discountCode);
             return discountPolicy.discount(member, price);
         }
+        //해당 커밋은 작업내역 없음.
     }
 }
