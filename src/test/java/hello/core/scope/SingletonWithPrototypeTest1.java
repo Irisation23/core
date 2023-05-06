@@ -4,7 +4,10 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.inject.Provider;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.ObjectFactory;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Scope;
@@ -36,19 +39,17 @@ public class SingletonWithPrototypeTest1 {
 
         ClientBean clientBean2 = ac.getBean(ClientBean.class);
         int cnt2 = clientBean2.logic();
-        assertThat(cnt2).isEqualTo(2);
+        assertThat(cnt2).isEqualTo(1);
     }
 
     @Scope("singleton")
     static class ClientBean {
-        private final PrototypeBean prototypeBean; // 생성시점에 주입
 
         @Autowired
-        public ClientBean(PrototypeBean prototypeBean) {
-            this.prototypeBean = prototypeBean;
-        }
+        private Provider<PrototypeBean> prototypeBeansProvider;
 
         public int logic() {
+            PrototypeBean prototypeBean = prototypeBeansProvider.get();
             prototypeBean.addCnt();
             return prototypeBean.getCnt();
         }
